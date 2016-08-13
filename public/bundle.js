@@ -56,6 +56,10 @@
 
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 
+	var _morseCodes = __webpack_require__(175);
+
+	var _morseCodes2 = _interopRequireDefault(_morseCodes);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -73,63 +77,25 @@
 	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(App).call(this, props));
 
 	    _this.state = {
-	      morseText: ""
-	    };
-	    _this.morseCode = {
-	      "A": ".-",
-	      "B": "-...",
-	      "C": "-.-.",
-	      "D": "-..",
-	      "E": ".",
-	      "F": "..-.",
-	      "G": "--.",
-	      "H": "....",
-	      "I": "..",
-	      "J": ".---",
-	      "K": "-.-",
-	      "L": ".-..",
-	      "M": "--",
-	      "N": "-.",
-	      "O": "---",
-	      "P": ".--.",
-	      "Q": "--.-",
-	      "R": ".-.",
-	      "S": "...",
-	      "T": "-",
-	      "U": "..-",
-	      "V": "...-",
-	      "W": ".--",
-	      "X": "-..-",
-	      "Y": "-.--",
-	      "Z": "--..",
-	      "0": "-----",
-	      "1": ".----",
-	      "2": "..---",
-	      "3": "...--",
-	      "4": "....-",
-	      "5": ".....",
-	      "6": "-....",
-	      "7": "--...",
-	      "8": "---..",
-	      "9": "----."
+	      input: "",
+	      output: ""
 	    };
 	    return _this;
 	  }
 
 	  _createClass(App, [{
 	    key: 'convertToMorse',
-	    value: function convertToMorse(text) {
-	      this.setState({ original: text });
+	    value: function convertToMorse(input) {
 	      var output = "";
-	      var morseArray = text.split("");
+	      var morseArray = input.split("");
 	      for (var i = 0; i < morseArray.length; i++) {
 	        if (morseArray[i].toUpperCase() == " ") {
-	          output += " ";
+	          output += "  ";
 	        } else {
-	          output += this.morseCode[morseArray[i].toUpperCase()];
+	          output += _morseCodes2.default[morseArray[i].toUpperCase()];
 	        }
 	      }
-	      this.setState({ morseText: output });
+	      this.setState({ output: output, input: input });
 	    }
 	  }, {
 	    key: 'render',
@@ -139,21 +105,34 @@
 	      return _react2.default.createElement(
 	        'div',
 	        { className: 'container' },
-	        _react2.default.createElement('input', { className: 'form-control',
-	          onChange: function onChange(e) {
-	            return _this2.convertToMorse(e.target.value);
-	          } }),
 	        _react2.default.createElement(
-	          'h3',
-	          null,
-	          'original: ',
-	          this.state.original
-	        ),
-	        _react2.default.createElement(
-	          'h3',
-	          null,
-	          'morse: ',
-	          this.state.morseText
+	          'div',
+	          { className: 'row' },
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'col-sm-12' },
+	            _react2.default.createElement(
+	              'h1',
+	              null,
+	              'Morse Code Translator'
+	            ),
+	            _react2.default.createElement('input', { className: 'form-control',
+	              onChange: function onChange(e) {
+	                return _this2.convertToMorse(e.target.value);
+	              } }),
+	            _react2.default.createElement(
+	              'h3',
+	              null,
+	              'original: ',
+	              this.state.input
+	            ),
+	            _react2.default.createElement(
+	              'h3',
+	              null,
+	              'morse: ',
+	              this.state.output
+	            )
+	          )
 	        )
 	      );
 	    }
@@ -21569,6 +21548,56 @@
 	var ReactMount = __webpack_require__(167);
 
 	module.exports = ReactMount.renderSubtreeIntoContainer;
+
+/***/ },
+/* 175 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	var morseCodes = exports.morseCodes = {
+	  "A": ".-",
+	  "B": "-...",
+	  "C": "-.-.",
+	  "D": "-..",
+	  "E": ".",
+	  "F": "..-.",
+	  "G": "--.",
+	  "H": "....",
+	  "I": "..",
+	  "J": ".---",
+	  "K": "-.-",
+	  "L": ".-..",
+	  "M": "--",
+	  "N": "-.",
+	  "O": "---",
+	  "P": ".--.",
+	  "Q": "--.-",
+	  "R": ".-.",
+	  "S": "...",
+	  "T": "-",
+	  "U": "..-",
+	  "V": "...-",
+	  "W": ".--",
+	  "X": "-..-",
+	  "Y": "-.--",
+	  "Z": "--..",
+	  "0": "-----",
+	  "1": ".----",
+	  "2": "..---",
+	  "3": "...--",
+	  "4": "....-",
+	  "5": ".....",
+	  "6": "-....",
+	  "7": "--...",
+	  "8": "---..",
+	  "9": "----."
+	};
+
+	exports.default = morseCodes;
 
 /***/ }
 /******/ ]);
