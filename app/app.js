@@ -16,7 +16,7 @@ class App extends Component {
     let morseArray = input.split("")
     for(let i = 0; i < morseArray.length; i++){
       if(morseArray[i].toUpperCase() == " "){
-        output += "  "
+        output += "\xa0\xa0"
       }
       else {
         output += morseCodes[morseArray[i].toUpperCase()]
